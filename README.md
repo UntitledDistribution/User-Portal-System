@@ -30,7 +30,6 @@ This is the very first version of my authentication system and i'm aware this ve
 for this version, you need to install the following via Python's package manager
  - tkinter
  - pillow
- - ttkbootstrap
  - customtkinter
 
 
