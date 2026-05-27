@@ -1,4 +1,4 @@
-# Python Authentication System
+# Python User Portal System
 This is a basic Python authentication system where a plaintext file in form of "data.list" is utilised by the saveManager.py file to store user credentials. 
 This authentication system is only used to demonstrate my skills in Python and utilising Tkinter, CustomTkinter and TTKBootstrap.
 
