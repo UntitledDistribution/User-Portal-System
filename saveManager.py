@@ -16,7 +16,7 @@ if not os.path.exists(ud): #Checks if the 'data.list' file exists.
 def hash(key):
 
     binary = key.encode() # Encode the password to bytes
-    hash = hl.sha256(binary) # Hash the password using SHA-256 algorithm
+    hash = hl.sha256(binary) # Hash the password using SHA-256
     hashHex = hash.hexdigest() # Convert the hash to hexadecimal format
     return hashHex
 
@@ -33,7 +33,7 @@ class write():
         key = hash(key) # Use the hash function to convert key to hash before saving.
 
         with open(ud, "a") as f: 
-            f.write(f"{eml}, {usr}, {key}, {desc}, {img}\n") #Writes the email, username, hashed password, description and image name to the 'data.list' file. Each piece of data is separated by a comma and space for easy retrieval later. The "a" means "append", as we are adding to the file.
+            f.write(f"\n{eml}, {usr}, {key}, {desc}, {img}\n") #Writes the email, username, hashed password, description and image name to the 'data.list' file. Each piece of data is separated by a comma and space for easy retrieval later. The "a" means "append", as we are adding to the file.
     
     
     def modify(eml, desc="", img=""):
@@ -92,21 +92,23 @@ class read():
     # CHECK ACCOUNT INFORMATION
     class check():
         
-        def email(eml):
+        #Email + Username checks (Function legacy name: email)
+        def publicInfo(eml, usr):
 
             with open(ud, "r") as f:
                 lines = f.readlines()
 
                 for line in lines:
                     try:
-                        emlFetch, _, _, _, _ = line.split(", ") # We only need the email, skip the rest using underscore (_).
+                        emlFetch, usrFetch, _, _, _ = line.split(", ") # We only need the email, skip the rest using underscore (_).
 
-                        if emlFetch == eml:
+                        if emlFetch == eml and usrFetch == usr:
                             return True # If the email exists in the file, return True.
                         
                     except ValueError: # If the line has an abnormal amount of variables (!=5), skip it.
                         continue
                 return False # If the email doesn't match, return False.
+            
 
 
         def key(eml, key):

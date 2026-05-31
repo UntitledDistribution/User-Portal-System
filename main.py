@@ -1,6 +1,6 @@
 import customtkinter as ctk #In place for standard tkinter as it has more customisation options.
 import os # Handling file directories cross-platform. 
-import io
+import io #File-as-a-string for profile section
 import base64 as b64
 import saveManager # Utilise my own Library - Middleman of Saved data.
 from tkinter import messagebox
@@ -11,8 +11,6 @@ from PIL import Image, ImageTk #Image handling
 
 
 root = ctk.CTk() #Creating the main window.
-
-global ww, wh
 
 FontHead = ctk.CTkFont(family="Arial", size=24, weight="bold") #Heading font.
 FontBold = ctk.CTkFont(family="Arial", size=18, weight="bold") #Bold font.
@@ -143,7 +141,7 @@ class display():
         RregButton = ctk.CTkButton(RFrame, text="Register", command=logic.register) #Registration button
         RregButton.grid(row=4, column=0, padx=15, pady=3.5)
 
-        RexistButton = ctk.CTkButton(RFrame, text="Have an account?", command=display.login) #Registration button
+        RexistButton = ctk.CTkButton(RFrame, text="Have an account?", command=display.login) # Switch to login button
         RexistButton.grid(row=5, column=0, padx=15, pady=3.5)
 
         window.size(ww=300, wh=350, center=0) #resizes window size to 300x350 but doesn't center.
@@ -174,7 +172,16 @@ class display():
 
         Ppfp = Ppfp.resize((100, 100))
         Ppfp = ImageTk.PhotoImage(Ppfp)
-        PButton = ctk.CTkButton(PFrame, image=Ppfp, text="", fg_color="transparent", bg_color="transparent", hover_color="grey", command=logic.profile.updatePfp)
+        PButton = ctk.CTkButton(
+            PFrame, 
+            image=Ppfp, 
+            text="", 
+            fg_color="transparent", 
+            bg_color="transparent", 
+            hover_color="grey", 
+            command=logic.profile.updatePfp
+            )
+        
         PButton.grid(row=1, column=0, pady=5)
 
 
@@ -230,14 +237,13 @@ class logic():
     def login():
         eml = LemlEntry.get()
         key = LkeyEntry.get()
-
-        if eml == "":
-            messagebox.showerror("Account Portal", "Invalid Credentials...\nPlease Try Again.")
-            LkeyEntry.delete(0, ctk.END)
-            return
         
         if saveManager.read.check.key(eml, key) == True:
             display.profile(eml)
+        else:
+            #Display messagebox to the user, informing them the credentials are wrong.
+            messagebox.showerror("Account Portal", "Invalid Credentials...\nPlease Try Again.")
+            LkeyEntry.delete(0, ctk.END)
 
 
 
@@ -266,7 +272,7 @@ class logic():
             print("[INFO] Requirement Trip: Complexity")
             trip = True
     
-        if saveManager.read.check.email(eml) == True:
+        if saveManager.read.check.publicInfo(eml, usr) == True:
             trip = None
 
         """ END ACCOUNT REQUIREMENT CHECKS """
