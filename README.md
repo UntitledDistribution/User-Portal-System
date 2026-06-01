@@ -32,9 +32,33 @@ for this version, you need to install the following via Python's package manager
  - pillow
  - customtkinter
 
+## Revamped Solution: v2.0+
+Dark mode - Introduced automatically thanks to full migration to CustomTkinter
+Reduced amount of code - Clear and Concise
+Cross-platform - Thanks to using the IO library to navigate directories.
+More Comments - The portal system is now easier to be understood by other programmers.
+
+The dependent libraries for this script are as followed:
+ - Tkinter (Deliver messages to the user)
+ - CustomTkinter (UI Customisation)
+ - Pillow (Image rendering)
+
 
 # Details
 This section will cover the files / scripts in my program and why they are needed.
+
+
+## main.py
+This script runs the logic and interface of the program utilising CustomTkinter to display content to the user. It is used to scoop user inputted information to communicate with saveManager to save and recall user infromation.
+
+Here are the three pages that are included in my program:
+
+| Login Page | Profile Page | Registration Page |
+| ---------- | ------------ | ----------------- |
+|<img width="210" height="266" alt="LPreview" src="https://github.com/user-attachments/assets/c84ea39e-083b-4e27-896a-ddda205b0426" /> | <img width="209" height="471" alt="PPage" src="https://github.com/user-attachments/assets/601e0c33-9068-4d45-843b-a98bb1ab23d1" /> | <img width="209" height="264" alt="RPreview" src="https://github.com/user-attachments/assets/7b649d58-0dcc-4b76-b8aa-2cbfa9b9c73d" /> |
+
+The main.py script also has requirements during registration and ensures the program remains stable without breakage (hopefully! - Bug fixes are released to mitigate this.)
+
 
 ## saveManager.py
 This script is essentially the middle-man that is utilised in main.py as a library.
@@ -52,4 +76,4 @@ This is to prevent the program from causing errors when spliting the commas and 
 ```shell
 ..., ..., ..., This is a Description!, img
 ```
-If the image variable is set as 'img' it will default to the default profile image located in bin\defaultpfp.jpg
+If the image variable is set as 'img' it will default to the default profile image located in bin\defaultpfp.jpg otherwise, the program will assume its a Base64 string and will try to render the string as an image.
