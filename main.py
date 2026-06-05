@@ -136,13 +136,13 @@ class display():
         RusrEntry.grid(row=2, column=0, padx=15, pady=0.5)
 
         RkeyEntry = ctk.CTkEntry(RFrame, placeholder_text="Password", show="•") #Password entry field
-        RkeyEntry.grid(row=3, column=0, padx=15, pady=3.5)
+        RkeyEntry.grid(row=3, column=0, padx=15, pady=0.5)
 
         RregButton = ctk.CTkButton(RFrame, text="Register", command=logic.register) #Registration button
-        RregButton.grid(row=4, column=0, padx=15, pady=3.5)
+        RregButton.grid(row=4, column=0, padx=15, pady=7.0)
 
         RexistButton = ctk.CTkButton(RFrame, text="Have an account?", command=display.login) # Switch to login button
-        RexistButton.grid(row=5, column=0, padx=15, pady=3.5)
+        RexistButton.grid(row=5, column=0, padx=15, pady=2.5)
 
         window.size(ww=300, wh=350, center=0) #resizes window size to 300x350 but doesn't center.
         RFrame.pack(padx=0, pady=0) #Display the page.

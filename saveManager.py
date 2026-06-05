@@ -69,7 +69,7 @@ class write():
                     newDesc = desc if desc != "" else descFetch
                     newImg = img if img != "" else imgFetch
                 
-                    newLine = f"{emlFetch}, {usrFetch}, {keyFetch}, {newDesc}, {newImg}\n"
+                    newLine = f"\n{emlFetch}, {usrFetch}, {keyFetch}, {newDesc}, {newImg}\n"
                     newLines.append(newLine)
                 else:
                     # Keep other users' data unchanged
