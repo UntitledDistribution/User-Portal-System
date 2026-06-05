@@ -69,7 +69,7 @@ This allows for the main.py document to be more efficient when handling read and
 ## data.list
 The user records are stored here in a CSV / PlainText format where User Information is formatted as:
 ```shell
-Email, Username, Password, Description, Image/pfp (base64 format)
+Email, Username, Password (SHA-256), Description, Image/pfp (base64 format)
 ```
 and if you was to execute the program or review the code you'd notice there would be some default values such as the Description and Image.
 This is to prevent the program from causing errors when spliting the commas and assigning the variables. The default values for the description and image is:
