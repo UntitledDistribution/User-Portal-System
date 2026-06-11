@@ -50,7 +50,7 @@ echo.
 echo Starting the program...
 echo Logging to LOG.docx - this file does NOT contain any sensitive information - It's a text file but with a word document file extension to resolve problems uploading later.
 
-python "%~dp0main.py" > "%~dp0LOG.docx" 2>&1
+python "%~dp0main.py" > "%~dp0LOG.txt" 2>&1
 
 cls
 echo.
