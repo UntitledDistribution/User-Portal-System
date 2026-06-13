@@ -36,7 +36,7 @@ class write():
             f.write(f"\n{eml}, {usr}, {key}, {desc}, {img}\n") #Writes the email, username, hashed password, description and image name to the 'data.list' file. Each piece of data is separated by a comma and space for easy retrieval later. The "a" means "append", as we are adding to the file.
     
     
-    def modify(eml, desc="", img=""):
+    def modify(eml, key="", desc="", img=""):
         """
         Description and image variable contain a DEFAULT variable of nothing.
          This ensures no errors are caused for if the user only decides to only modify just the description or image.
@@ -66,10 +66,13 @@ class write():
 
                 if emlFetch == eml:
                     # Apply modifications
+                    newKey = key if key != "" else keyFetch #Password Reset
                     newDesc = desc if desc != "" else descFetch
                     newImg = img if img != "" else imgFetch
                 
-                    newLine = f"\n{emlFetch}, {usrFetch}, {keyFetch}, {newDesc}, {newImg}\n"
+                    newKey = hash(newKey)
+
+                    newLine = f"\n{emlFetch}, {usrFetch}, {newKey}, {newDesc}, {newImg}\n"
                     newLines.append(newLine)
                 else:
                     # Keep other users' data unchanged
