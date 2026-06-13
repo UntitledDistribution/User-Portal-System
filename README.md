@@ -25,14 +25,7 @@ Steps may vary depending on your Operating System, but for this guide, I will be
 ```
 Where PACKAGE_NAME is an item of the list provided below to get the script to work.
 
-## Initial Release: v1.0
-This is the very first version of my authentication system and i'm aware this version is extremely inefficient and may not be as cross-platform friendly as I had hoped.
-for this version, you need to install the following via Python's package manager
- - tkinter
- - pillow
- - customtkinter
-
-## Revamped Solution: v2.0+
+## Solution Dependancies
 Dark mode - Introduced automatically thanks to full migration to CustomTkinter
 Reduced amount of code - Clear and Concise
 Cross-platform - Thanks to using the IO library to navigate directories.
@@ -65,6 +58,8 @@ This script is essentially the middle-man that is utilised in main.py as a libra
 If the data.list file doesn't exist, it gets created with nothing inside to prevent errors.
 This allows for the main.py document to be more efficient when handling read and writes between the main.py and data.list file
 
+## reqManager.py
+This script is treated like a library / dependancy in my program. It is needed to check inputted user credentials against the account requirements to ensure it meets a set of rules such as a password needing to be longer than 8 characters long, Whilst it would be possible to merge this file into the ```main.py``` file, I have chosen it to be an external file so it is easier for others to understand and modify the file without even needing an advanced understanding of Python, you can modify the requirements with simplicity.
 
 ## data.list
 The user records are stored here in a CSV / PlainText format where User Information is formatted as:
